@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="tr">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+    <title>Hello, world!</title>
+  </head>
+  <body>
+	<div class="container">
+		<div class="btn-group w-100 my-4" role="group">
+			<button id="btn1" type="button" class="btn btn-secondary rounded-0">1</button>
+			<button id="btn2" type="button" class="btn btn-secondary">2</button>
+			<button id="btn3" type="button" class="btn btn-secondary rounded-0">3</button>
+		</div>
+		<div>
+			<div class="area bg-danger p-3 d-none" style="opacity:0;">
+				Lorem ipsum
+			</div>
+			<div class="area bg-success p-3 d-none" style="opacity:0;">
+				Lorem ipsum
+			</div>
+			<div class="area bg-warning p-3 d-none" style="opacity:0;">
+				Lorem ipsum
+			</div>
+		</div>
+	</div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpathbootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    <script>
+		var firstIndex = 0,btnIndex;
+		
+		$(document).ready(function(){
+			$('.btn').eq(firstIndex).removeClass('btn-secondary').addClass('btn-warning');
+			$('.area').eq(firstIndex).removeClass('d-none').animate({opacity:1},1000);
+		});
+		$('.btn').click(function(){
+			btnIndex = $(this).index('.btn');
+			//--
+			$('.btn').removeClass('btn-warning').addClass('btn-secondary');
+			$(this).removeClass('btn-secondary').addClass('btn-warning');
+			//--
+			$('.area').each(function(index){
+				if(btnIndex == index)
+				{
+					$('.area').eq(index).removeClass('d-none').animate({opacity:1},1000);
+				}
+				else
+				{
+					$('.area').eq(index).addClass('d-none').css('opacity',0);
+				}
+			});
+		});
+    </script>
+  </body>
+</html>
